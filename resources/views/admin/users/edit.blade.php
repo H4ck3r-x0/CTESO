@@ -75,6 +75,16 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="superAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Super Admin') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="superAdmin" type="checkbox" class="form-control" name="superAdmin"
+                                  {{$user->superAdmin === 1 ? 'checked' : ''}}
+                                 >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="admin" class="col-md-4 col-form-label text-md-right">{{ __('Admin') }}</label>
 
                             <div class="col-md-6">

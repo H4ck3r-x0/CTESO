@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                       @foreach ($users as $user)
-                      <tr class="{{$user->admin === 1 ? 'bg-light' : ''}}">
+                      <tr class="{{$user->admin === 1 ? 'bg-light' : '' || $user->superAdmin === 1 ? 'bg-light' : ''}}">
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>

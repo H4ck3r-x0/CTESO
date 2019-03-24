@@ -56,9 +56,9 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
+      // get the user from the database.
       $user = User::find($id);
       return view('admin.users.edit')->with('user', $user);
-
     }
 
     /**
@@ -69,6 +69,7 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // get the user from the database.
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -83,7 +84,15 @@ class AdminUsersController extends Controller
           $user->admin = 0;
         }
 
+        // check if the user sets to super admin..
+        if ($request->input('superAdmin') !== null && $request->input('superAdmin') === 'on')
+        {
+          $user->superAdmin = 1;
+        } else {
+          $user->superAdmin = 0;
+        }
 
+        // updating the user.
         $user->save();
         return redirect()->route('edit_user', $id)->with('status', 'User Updated!');
     }
@@ -93,8 +102,13 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        // get the user from the database.
+        $user = User::find($id);
+        // deleting the user.
+        $user->delete();
+        // redirecting to show users page.
+        return redirect()->route('show_users');
     }
 }
