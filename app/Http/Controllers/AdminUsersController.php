@@ -94,7 +94,7 @@ class AdminUsersController extends Controller
 
         // updating the user.
         $user->save();
-        return redirect()->route('edit_user', $id)->with('status', 'User Updated!');
+        return redirect()->route('edit_user', $id)->with('status', 'User was updated!');
     }
 
     /**
