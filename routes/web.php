@@ -25,6 +25,21 @@ Route::prefix('admin')->middleware(['middleware' => 'admin'])->group(function ()
   Route::get('index', 'AdminController@index')->name('index');
   //End Admins Route
 
+
+  // Flights Route
+    Route::get('add_flight', 'adminFlightsController@add_flight')->name('add_flight');
+    Route::post('save_flight', 'adminFlightsController@store')->name('save_flight');
+    Route::get('show_flights', 'adminFlightsController@index')->name('show_flights');
+    Route::get('edit_flight/{id}', 'adminFlightsController@edit')->name('edit_flight');
+    Route::post('update_flight/{id}', 'adminFlightsController@update')
+            ->middleware(['middleware' => 'superAdmin'])
+            ->name('update_flight');
+    Route::get('delete_flight/{id}', 'adminFlightsController@destroy')
+            ->middleware(['middleware' => 'superAdmin'])
+            ->name('delete_flight');
+  // End Flights Route
+
+
   // Users Route
     Route::get('users', 'AdminUsersController@index')->name('show_users');
     Route::get('edit_user/{id}', 'AdminUsersController@edit')

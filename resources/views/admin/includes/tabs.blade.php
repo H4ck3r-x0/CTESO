@@ -3,10 +3,10 @@
       <a class="nav-link active" href="{{route('index')}}">Homepage</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Add a Flight</a>
+      <a class="nav-link active" href="{{route('add_flight')}}">Add a Flight</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Show Flights</a>
+      <a class="nav-link active" href="{{route('show_flights')}}">Show Flights</a>
     </li>
 
     <li class="nav-item">
