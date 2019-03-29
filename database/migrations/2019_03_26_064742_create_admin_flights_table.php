@@ -17,7 +17,8 @@ class CreateAdminFlightsTable extends Migration
             $table->bigIncrements('id');
             $table->string('from');
             $table->string('to');
-            $table->string('depart');
+            $table->string('depart_date');
+            $table->string('depart_time');
             $table->string('arrival');
             $table->string('seats');
             $table->string('price');
@@ -25,6 +26,7 @@ class CreateAdminFlightsTable extends Migration
             $table->foreign('created_by')->references('id')
                   ->on('users')
                   ->onDelete('cascade');
+            $table->string('flight_number');
             $table->timestamps();
         });
     }

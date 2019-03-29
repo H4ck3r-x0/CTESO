@@ -18,7 +18,8 @@
                         <th scope="col">#</th>
                         <th scope="col">From</th>
                         <th scope="col">To</th>
-                        <th scope="col">Depart</th>
+                        <th scope="col">Depart Date</th>
+                        <th scope="col">Depart Time</th>
                         <th scope="col">Arrival</th>
                         <th scope="col">Seats</th>
                         <th scope="col">Price</th>
@@ -33,7 +34,8 @@
                         <th scope="row">{{$flight->id}}</th>
                         <td>{{$flight->from}}</td>
                         <td>{{$flight->to}}</td>
-                        <td>{{$flight->depart}}</td>
+                        <td>{{$flight->depart_date}}</td>
+                        <td>{{$flight->depart_time}}</td>
                         <td>{{$flight->arrival}}</td>
                         <td>{{$flight->seats}}</td>
                         <td>{{$flight->price}}</td>

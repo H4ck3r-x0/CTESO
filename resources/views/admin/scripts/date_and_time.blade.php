@@ -6,8 +6,11 @@
 
 
 <script type="text/javascript">
-    $('#depart').datetimepicker({
+    $('#depart_date').datetimepicker({
       format:'DD/MM/YYYY'
+    });
+    $('#depart_time').datetimepicker({
+      format:'HH:mm:ss A'
     });
     $('#arrival').datetimepicker({
       format:'HH:mm:ss A'

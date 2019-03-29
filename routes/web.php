@@ -15,8 +15,12 @@
 Auth::routes();
 // End Authiantcation routes.
 
+
 // Homepage Route
 Route::get('/', 'HomeController@index')->name('home');
+
+// Search Routes
+Route::post('search_flights', 'searchFlightsController@flights')->name('search_flights_post');
 
 
 // Admin Panel Routes

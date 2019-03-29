@@ -37,7 +37,8 @@ class adminFlightsController extends Controller
       $validator = Validator::make($request->all(), [
          'from' => 'required|string|max:255',
          'to' => 'required|string|max:255',
-         'depart' => 'required|string|max:255',
+         'depart_date' => 'required|string|max:255',
+         'depart_time' => 'required|string|max:255',
          'arrival' => 'required|string|max:255',
          'seats' => 'required|string|max:255',
          'price' => 'required|string|max:255',
@@ -57,11 +58,19 @@ class adminFlightsController extends Controller
       $flight = new AdminFlight();
       $flight->from = $request->input('from');
       $flight->to = $request->input('to');
-      $flight->depart = $request->input('depart');
+      $flight->depart_date = $request->input('depart_date');
+      $flight->depart_time = $request->input('depart_time');
       $flight->arrival = $request->input('arrival');
       $flight->seats = $request->input('seats');
       $flight->price = $request->input('price');
       $flight->created_by = $request->input('created_by');
+
+      // Generate Flight number
+      $from = $flight->from;
+      $flight_name = substr($from, 0, 2);
+      $random_number =  rand(10, 20);
+      $flight->flight_number = $flight_name . '-' . $random_number;
+
       $flight->save();
       return redirect()->route('add_flight')->with('status', 'Flight saved!');;
 
@@ -92,7 +101,8 @@ class adminFlightsController extends Controller
         $flight =  $adminFlight->find($id);
         $flight->from = $request->input('from');
         $flight->to = $request->input('to');
-        $flight->depart = $request->input('depart');
+        $flight->depart_date = $request->input('depart_date');
+        $flight->depart_time = $request->input('depart_time');
         $flight->arrival = $request->input('arrival');
         $flight->seats = $request->input('seats');
         $flight->price = $request->input('price');

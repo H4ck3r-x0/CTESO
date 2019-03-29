@@ -47,14 +47,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="depart" class="col-md-4 col-form-label text-md-right">{{ __('Depart') }}</label>
+                            <label for="depart_date" class="col-md-4 col-form-label text-md-right">{{ __('Depart Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="depart" type="text" class="form-control {{ $errors->has('depart') ? ' is-invalid' : '' }}" name="depart" value="{{ $flight->depart }}" required>
+                                <input id="depart_date" type="text" class="form-control {{ $errors->has('depart_date') ? ' is-invalid' : '' }}" name="depart_date" value="{{ $flight->depart_date }}" required>
 
-                                @if ($errors->has('depart'))
+                                @if ($errors->has('depart_date'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('depart') }}</strong>
+                                        <strong>{{ $errors->first('depart_date') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="depart_time" class="col-md-4 col-form-label text-md-right">{{ __('Depart') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="depart_time" type="text" class="form-control {{ $errors->has('depart_time') ? ' is-invalid' : '' }}" name="depart_time" value="{{ $flight->depart_time }}" required>
+
+                                @if ($errors->has('depdepart_timeart'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('depart_time') }}</strong>
                                     </span>
                                 @endif
                             </div>
