@@ -19,7 +19,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">ID Number</th>
-                        <th scope="col">Phone Number</th>
+                        <th scope="col">Passport</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Admin</th>
                         <th scope="col">Created at</th>
                         @if (Auth::user()->superAdmin)
@@ -35,6 +36,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->id_number}}</td>
+                        <td>{{$user->passport_number}}</td>
                         <td>{{$user->phone_number}}</td>
                         <td>
                           @if ($user->superAdmin === 1)

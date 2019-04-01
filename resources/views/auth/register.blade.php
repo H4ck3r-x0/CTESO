@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'Register')
 @section('body')
 <div class="container">
     <div class="row justify-content-center">
@@ -48,6 +48,20 @@
                                 @if ($errors->has('id_number'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('id_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="passport_number" class="col-md-4 col-form-label text-md-right">{{ __('Passport Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="passport_number" type="text" class="form-control" name="passport_number" value="{{ old('passport_number') }}">
+
+                                @if ($errors->has('passport_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('passport_number') }}</strong>
                                     </span>
                                 @endif
                             </div>
