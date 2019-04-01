@@ -27,6 +27,9 @@ class searchFlightsController extends Controller
                 ->withInput();
       }
 
+
+      dump($request->all());
+
       // search the database for flights.
       // get the request inputs,
       $from = $request->input('from');

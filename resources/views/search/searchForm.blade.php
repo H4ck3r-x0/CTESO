@@ -3,21 +3,19 @@
   <div class="row">
     <div class="col">
       <label for="from">From</label>
-      <input type="text" class="form-control {{ $errors->has('from') ? ' is-invalid' : '' }}" name="from" placeholder="Country, city" required>
-      @if ($errors->has('from'))
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $errors->first('from') }}</strong>
-          </span>
-      @endif
+      <select class="form-control" id="from" name="from">
+        @foreach ($flights as $flight)
+        <option value="{{$flight->from}}">{{$flight->from}}</option>
+        @endforeach
+      </select>
     </div>
     <div class="col">
-      <label for="from">To</label>
-      <input type="text" class="form-control {{ $errors->has('to') ? ' is-invalid' : '' }}" name="to" placeholder="Country, city" required>
-      @if ($errors->has('to'))
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $errors->first('to') }}</strong>
-          </span>
-      @endif
+      <label for="to">To</label>
+      <select class="form-control" id="to" name="to">
+        @foreach ($flights as $flight)
+        <option value="{{$flight->to}}">{{$flight->to}}</option>
+        @endforeach
+      </select>
     </div>
     <div class="col">
       <label for="depart_date">Depart</label>
