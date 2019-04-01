@@ -37,3 +37,5 @@
       </div>
   </div>
 </form>
+
+@include('search.scripts.date_and_time')

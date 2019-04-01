@@ -36,7 +36,9 @@ class adminFlightsController extends Controller
     {
       $validator = Validator::make($request->all(), [
          'from' => 'required|string|max:255',
+         'departure_airport' => 'required|string|max:255',
          'to' => 'required|string|max:255',
+         'arrival_airport' => 'required|string|max:255',
          'depart_date' => 'required|string|max:255',
          'depart_time' => 'required|string|max:255',
          'arrival' => 'required|string|max:255',
@@ -53,11 +55,11 @@ class adminFlightsController extends Controller
                 ->withInput();
       }
 
-      //dump($request->all());
-
       $flight = new AdminFlight();
       $flight->from = $request->input('from');
+      $flight->departure_airport = $request->input('departure_airport');
       $flight->to = $request->input('to');
+      $flight->arrival_airport = $request->input('arrival_airport');
       $flight->depart_date = $request->input('depart_date');
       $flight->depart_time = $request->input('depart_time');
       $flight->arrival = $request->input('arrival');
@@ -100,7 +102,9 @@ class adminFlightsController extends Controller
     {
         $flight =  $adminFlight->find($id);
         $flight->from = $request->input('from');
+        $flight->departure_airport = $request->input('departure_airport');
         $flight->to = $request->input('to');
+        $flight->arrival_airport = $request->input('arrival_airport');
         $flight->depart_date = $request->input('depart_date');
         $flight->depart_time = $request->input('depart_time');
         $flight->arrival = $request->input('arrival');

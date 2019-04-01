@@ -16,7 +16,9 @@ class CreateAdminFlightsTable extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('from');
+            $table->string('departure_airport');
             $table->string('to');
+            $table->string('arrival_airport');
             $table->string('depart_date');
             $table->string('depart_time');
             $table->string('arrival');

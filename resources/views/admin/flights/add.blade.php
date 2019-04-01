@@ -34,6 +34,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="departure_airport" class="col-md-4 col-form-label text-md-right">{{ __('Departure Airport') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="departure_airport" type="text" class="form-control {{ $errors->has('departure_airport') ? ' is-invalid' : '' }}" name="departure_airport" value="{{ old('departure_airport') }}" placeholder="eg, Boston Airport" required>
+
+                                @if ($errors->has('departure_airport'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('departure_airport') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          <hr>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="to" class="col-md-4 col-form-label text-md-right">{{ __('To') }}</label>
 
                             <div class="col-md-6">
@@ -46,6 +64,25 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="arrival_airport" class="col-md-4 col-form-label text-md-right">{{ __('Arrival Airport') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="arrival_airport" type="text" class="form-control {{ $errors->has('arrival_airport') ? ' is-invalid' : '' }}" name="arrival_airport" value="{{ old('arrival_airport') }}" placeholder="eg, DC Airport" required>
+
+                                @if ($errors->has('arrival_airport'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('arrival_airport') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                          <div class="form-group">
+                            <hr>
+                          </div>
 
                         <div class="form-group row">
                             <label for="depart_date" class="col-md-4 col-form-label text-md-right">{{ __('Depart Date') }}</label>
