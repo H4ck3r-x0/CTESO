@@ -22,7 +22,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
+                                <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required autofocus>
+                                <input id="email" type="text" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -50,11 +50,25 @@
                             <label for="id_number" class="col-md-4 col-form-label text-md-right">{{ __('ID Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id_number" type="text" class="form-control {{ $errors->has('id_number') ? ' is-invalid' : '' }}" name="id_number" value="{{ $user->id_number }}" required autofocus>
+                                <input id="id_number" type="text" class="form-control {{ $errors->has('id_number') ? ' is-invalid' : '' }}" name="id_number" value="{{ $user->id_number }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('id_number'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('id_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="passport_number" class="col-md-4 col-form-label text-md-right">{{ __('Passport Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="passport_number" type="text" class="form-control {{ $errors->has('passport_number') ? ' is-invalid' : '' }}" name="passport_number" value="{{ $user->passport_number }}">
+
+                                @if ($errors->has('passport_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('passport_number') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -64,7 +78,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ $user->phone_number }}" required autofocus>
+                                <input id="phone_number" type="text" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ $user->phone_number }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

@@ -74,6 +74,7 @@ class AdminUsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->id_number = $request->input('id_number');
+        $user->passport_number = $request->input('passport_number');
         $user->phone_number = $request->input('phone_number');
 
         // check if the user sets to admin..
