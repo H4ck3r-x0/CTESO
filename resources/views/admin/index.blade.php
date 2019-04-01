@@ -14,7 +14,7 @@
 
                   <div class="card-body">
                     <p>
-                      Welcome, <b>{{Auth::user()->name}}</b> to CTEOS admin panel.
+                      Welcome, <b>{{Auth::user()->name}}</b> to {{config('app.name')}} admin panel.
                     </p>
                   </div>
               </div>
