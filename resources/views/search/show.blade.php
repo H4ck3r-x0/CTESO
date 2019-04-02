@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('body')
-
+@section('title', 'Flights')
 <div class="container">
   @if(count($results) > 0)
     @foreach ($results as $result)
@@ -14,11 +14,10 @@
             <img src="{{asset('icons/clock.png')}}" alt="-">
             Arrival {{$result->arrival}}
           </h5>
-          <p class="card-text">Write any information here ...</p>
-          <a href="#" class="btn btn-primary">${{$result->price}}</a>
+          <a href="#" class="btn btn-primary">Book <span>&#8594;</span> ${{$result->price}}</a>
         </div>
         <div class="card-footer text-muted bg-light">
-          From <b>{{$result->from}}</b> airport To <b>{{$result->to}}</b> airport.
+          Airports: Departure from {{$result->departure_airport}} Arrival to {{$result->arrival_airport}}
         </div>
       </div>
       <br>
