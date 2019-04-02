@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\AdminFlight;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreFlightsRequest;
 
 
 class adminFlightsController extends Controller
@@ -32,29 +32,13 @@ class adminFlightsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFlightsRequest $request)
     {
-      $validator = Validator::make($request->all(), [
-         'from' => 'required|string|max:255',
-         'departure_airport' => 'required|string|max:255',
-         'to' => 'required|string|max:255',
-         'arrival_airport' => 'required|string|max:255',
-         'depart_date' => 'required|string|max:255',
-         'depart_time' => 'required|string|max:255',
-         'arrival' => 'required|string|max:255',
-         'seats' => 'required|string|max:255',
-         'price' => 'required|string|max:255',
-         'created_by' => 'required',
-     ]);
 
+      // validate the request ..
+      $validated = $request->validated();
 
-     if ($validator->fails())
-      {
-        return redirect('admin/add_flight')
-                ->withErrors($validator)
-                ->withInput();
-      }
-
+      // get the requests.
       $flight = new AdminFlight();
       $flight->from = $request->input('from');
       $flight->departure_airport = $request->input('departure_airport');
@@ -73,6 +57,7 @@ class adminFlightsController extends Controller
       $random_number =  rand(10, 20);
       $flight->flight_number = $flight_name . '-' . $random_number;
 
+      // save the flight to the database and redirect back.
       $flight->save();
       return redirect()->route('add_flight')->with('status', 'Flight saved!');;
 
