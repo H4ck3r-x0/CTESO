@@ -11,7 +11,7 @@ class searchFlightsController extends Controller
 {
     public function flights(FlightSearchFormRequest $request, AdminFlight $flights)
     {
-
+      
       // Validate the search form inputs.
       $validated = $request->validated();
 

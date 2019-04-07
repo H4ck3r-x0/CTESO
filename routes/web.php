@@ -54,3 +54,10 @@ Route::prefix('admin')->middleware(['middleware' => 'admin'])->group(function ()
   // End Users Route
 });
 # End Admin Panel Routes
+
+
+// Book Flights Routes
+
+Route::post('book_flight', 'BookFlightsController@index')->name('book_flight_post');
+Route::post('flight_options', 'BookFlightsController@flight_options')->name('flight_options');
+Route::get('payment/{id}', 'BookFlightsController@payment')->name('payment');

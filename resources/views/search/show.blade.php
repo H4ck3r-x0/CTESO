@@ -14,7 +14,12 @@
             <img src="{{asset('icons/clock.png')}}" alt="-">
             Arrival {{$result->arrival}}
           </h5>
-          <a href="#" class="btn btn-primary">Book <span>&#8594;</span> ${{$result->price}}</a>
+          <form method="POST" action="{{ route('book_flight_post') }}">
+            @csrf
+            <input type="hidden" name="flight_id" value="{{$result->id}}">
+            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+            <button type="submit" class="btn btn-primary">Book <span>&#8594;</span> ${{$result->price}}</button>
+          </form>
         </div>
         <div class="card-footer text-muted bg-light">
           Airports: Departure from {{$result->departure_airport}} Arrival to {{$result->arrival_airport}}
