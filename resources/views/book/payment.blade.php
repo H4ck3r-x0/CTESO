@@ -53,19 +53,23 @@
                 <div class="col-md-6 mb-3">
                   <h4>{{$flight->user->name}} You will pay for</h4>
                   <p class="text-muted">Flight from: {{$flight->adminFlight->from}} to: {{$flight->adminFlight->to}}</p>
-                  <p class="text-muted">Total (USD) ${{$price}}</p>
+                  <p class="text-muted">Total (USD) ${{$flight->price}}</p>
                   @if($flight->meal  !== null)
-                    <p class="text-muted">Meals: $50</p>
+                    <p class="text-muted">Single meal costs: $50</p>
                   @else
                     <p class="text-muted">Meals: $0</p>
                   @endif
-                  <p class="text-muted">subtotal (USD) ${{$price}}</p>
+                  <p class="text-muted">Subtotal (USD) ${{$flight->price}}</p>
 
                 </div>
               </div>
 
               <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <form method="POST" action="{{route('confirmation')}}" >
+                @csrf
+                <input type="hidden" name="flight_id" value="{{$flight->id}}">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              </form>
         </div>
         <div class="card-footer text-muted bg-light">
         </div>

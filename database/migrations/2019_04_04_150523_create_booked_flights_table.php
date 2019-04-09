@@ -27,6 +27,7 @@ class CreateBookedFlightsTable extends Migration
           $table->foreign('flight_id')->references('id')
                 ->on('flights')
                 ->onDelete('cascade');
+          $table->string('ticket_number')->nullable();
           $table->timestamps();
         });
     }

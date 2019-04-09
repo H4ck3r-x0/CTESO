@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\AdminFlight;
 use App\BookFlight;
 use Redirect;
+use Str;
 
 class BookFlightsController extends Controller
 {
+
+
     public function index(Request $request, AdminFlight $adminFlight)
     {
       $flight_id = $request->input('flight_id');
@@ -18,6 +21,7 @@ class BookFlightsController extends Controller
 
     public function flight_options(Request $request, AdminFlight $adminFlight, BookFlight $book)
     {
+      $meal_price = 50; // meal price is fixed price.
       $travellers = $request->input('travellers');
       $meal = $request->input('meal');
       $seat = $request->input('seat');
@@ -38,7 +42,12 @@ class BookFlightsController extends Controller
       // check if the meal is set
       if($meal !== null)
       {
-        $price = $price + 50;
+        // check if the travellers more than 1 and they add meals to their flight.
+        if($travellers > 1)
+        {
+          $meal_price = $meal_price * $travellers;
+        }
+        $price = $price + $meal_price;
       }
 
       // check if the next to the window is set
@@ -71,19 +80,22 @@ class BookFlightsController extends Controller
 
       return redirect::route('payment', $book->id);
 
-
     }
 
     public function payment(BookFlight $book, $booked_id)
     {
       $flight = $book->with(['user', 'adminFlight'])->where('id', $booked_id)->first();
-      // check if the meal is set.
-      if($flight->meal  !== null)
-      {
-        $price = $flight->price + 50;
-      }else {
-        $price = $flight->price;
-      }
-      return view('book.payment')->with('flight', $flight)->with('price', $price);
+      return view('book.payment')->with('flight', $flight);
+    }
+
+    public function confirmation(BookFlight $book, Request $request)
+    {
+      // get the flight details.
+      $flight_id = $request->input('flight_id');
+      $flight = $book->with(['user', 'adminFlight'])->where('id', $flight_id)->first();
+      // generate a ticket number ..
+      $flight->ticket_number = '#'. rand(1, 1000000);
+      $flight->save();
+      return view('book.ticket')->with('flight', $flight);
     }
 }
