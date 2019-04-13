@@ -38,6 +38,10 @@
                                 {{ __('Logout') }}
                             </a>
 
+                            <a class="dropdown-item" href="{{ route('profile', Auth::user()->name) }}">
+                              Profile
+                            </a>
+
                           {{-- Check if the user is admin to show url to admin page. --}}
                            @if (Auth::user()->admin === 1 || Auth::user()->superAdmin === 1)
                             <a class="dropdown-item" href="{{ route('index') }}">

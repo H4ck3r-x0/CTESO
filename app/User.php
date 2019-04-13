@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\BookFlight;
+
 
 class User extends Authenticatable
 {
@@ -37,5 +39,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function book()
+    {
+      return $this->hasMany(BookFlight::class, 'user_id');
+    }
 
 }
