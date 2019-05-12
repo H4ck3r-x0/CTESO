@@ -21,6 +21,7 @@ class CreateAdminFlightsTable extends Migration
             $table->string('arrival_airport');
             $table->string('depart_date');
             $table->string('depart_time');
+            $table->string('return_date')->nullable();
             $table->string('arrival');
             $table->string('seats');
             $table->string('price');

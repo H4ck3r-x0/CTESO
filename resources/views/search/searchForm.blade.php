@@ -42,7 +42,7 @@
 
     <div class="col">
       <label for="depart_date">Depart</label>
-      <input id="depart_date" type="text" class="form-control {{ $errors->has('depart_date') ? ' is-invalid' : '' }}" name="depart_date" placeholder="01/01/2019" required>
+      <input id="depart_date" type="text" class="form-control {{ $errors->has('depart_date') ? ' is-invalid' : '' }}" name="depart_date" placeholder="dd/mm/yy" required>
       @if ($errors->has('depart_date'))
           <span class="invalid-feedback" role="alert">
               <strong>{{ $errors->first('depart_date') }}</strong>
@@ -52,7 +52,7 @@
 
     <div class="col return">
       <label for="return_date">Return</label>
-      <input id="return_date" type="text" class="form-control {{ $errors->has('return_date') ? ' is-invalid' : '' }}" name="return_date" placeholder="01/01/2019" required>
+      <input id="return_date" type="text" class="form-control {{ $errors->has('return_date') ? ' is-invalid' : '' }}" name="return_date" placeholder="dd/mm/yy" required>
       @if ($errors->has('return_date'))
           <span class="invalid-feedback" role="alert">
               <strong>{{ $errors->first('return_date') }}</strong>

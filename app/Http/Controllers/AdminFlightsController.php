@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AdminFlight;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreFlightsRequest;
-
 
 class adminFlightsController extends Controller
 {
@@ -47,6 +47,7 @@ class adminFlightsController extends Controller
       $flight->depart_date = $request->input('depart_date');
       $flight->depart_time = $request->input('depart_time');
       $flight->arrival = $request->input('arrival');
+      $flight->return_date = $request->input('return_date');
       $flight->seats = $request->input('seats');
       $flight->price = $request->input('price');
       $flight->created_by = $request->input('created_by');

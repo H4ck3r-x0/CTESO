@@ -18,7 +18,18 @@
                   <div class="card-body">
                     <form method="POST" action="{{ route('save_flight') }}">
                         @csrf
-
+                        <div class="form-group row">
+                          <div class="col-md-6">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="roundtrip" id="oneway" value="oneway" onclick="disable_return_date()" checked>
+                              <label class="form-check-label" for="oneway">One way</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="roundtrip" id="return" value="return" onclick="enable_return_date()">
+                              <label class="form-check-label" for="return">Return</label>
+                            </div>
+                          </div>
+                        </div>
                         <div class="form-group row">
                             <label for="from" class="col-md-4 col-form-label text-md-right">{{ __('From') }}</label>
 
@@ -126,6 +137,23 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group">
+                          <hr>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="return_date" class="col-md-4 col-form-label text-md-right">Return</label>
+                          <div class="col-md-6">
+                          <input id="return_date" type="text" class="form-control {{ $errors->has('return_date') ? ' is-invalid' : '' }}" name="return_date" placeholder="01/01/2019" required>
+                          @if ($errors->has('return_date'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('return_date') }}</strong>
+                              </span>
+                          @endif
+                        </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="seats" class="col-md-4 col-form-label text-md-right">{{ __('Seats') }}</label>
 
@@ -151,6 +179,9 @@
                                         <strong>{{ $errors->first('price') }}</strong>
                                     </span>
                                 @endif
+                                <span id="price_message" class="">
+                                  Note: You must include the price for the roundtrip.
+                                </span>
                             </div>
                         </div>
 
@@ -175,4 +206,5 @@
       </div>
 </div>
 @include('admin.scripts.date_and_time')
+@include('search.scripts.roundtrip')
 @endsection

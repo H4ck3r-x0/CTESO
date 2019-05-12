@@ -9,6 +9,9 @@
     $('#depart_date').datetimepicker({
       format:'DD/MM/YYYY'
     });
+    $('#return_date').datetimepicker({
+      format:'DD/MM/YYYY'
+    });
     $('#depart_time').datetimepicker({
       format:'HH:mm:ss A'
     });

@@ -64,12 +64,13 @@
                 </div>
               </div>
 
-              <hr class="mb-4">
               <form method="POST" action="{{route('confirmation')}}" >
                 @csrf
                 <input type="hidden" name="flight_id" value="{{$flight->id}}">
                 <button type="submit" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
               </form>
+              <hr class="mb-4">
+              <a href="{{route('home')}}" class="btn btn-secondary btn-lg btn-block">Go Back</a>
         </div>
         <div class="card-footer text-muted bg-light">
         </div>

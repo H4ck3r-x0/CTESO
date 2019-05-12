@@ -15,7 +15,7 @@ class AdminFlight extends Model
    * @var array
    */
   protected $fillable = [
-      'from', 'departure_airport', 'to', 'arrival_airport', 'depart', 'arrival', 'seats', 'price', 'created_by',
+      'from', 'departure_airport', 'to', 'arrival_airport', 'return_date', 'depart', 'arrival', 'seats', 'price', 'created_by',
   ];
 
   public function user()

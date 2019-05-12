@@ -11,21 +11,45 @@ class searchFlightsController extends Controller
 {
     public function flights(FlightSearchFormRequest $request, AdminFlight $flights)
     {
-      
-      // Validate the search form inputs.
-      $validated = $request->validated();
+      if (!$request->input('return_date')) {
+        // Validate the search form inputs.
+        $validated = $request->validated();
 
-      // search the database for flights.
-      // get the request inputs,
-      $from = $request->input('from');
-      $to   = $request->input('to');
-      $depart_date = $request->input('depart_date');
-      $results = $flights->where('from', $from)
-                         ->where('to', $to)
-                         ->where('depart_date', $depart_date)
-                         ->get();
+        // search the database for flights.
+        // get the request inputs,
+        $from = $request->input('from');
+        $to   = $request->input('to');
 
-      return view('search.show')->with('results', $results);
+        $depart_date = $request->input('depart_date');
+        $results = $flights->where('from', $from)
+                           ->where('to', $to)
+                           ->where('depart_date', $depart_date)
+                           ->where('return_date', NULL)
+                           ->get();
+
+        return view('search.show')->with('results', $results);
+      }
+
+      if ($request->input('return_date')) {
+        // Validate the search form inputs.
+        $validated = $request->validated();
+
+        // search the database for flights.
+        // get the request inputs,
+        $from = $request->input('from');
+        $to   = $request->input('to');
+
+        $depart_date = $request->input('depart_date');
+        $return_date =$request->input('return_date');
+
+        $results = $flights->where('from', $from)
+                           ->where('to', $to)
+                           ->where('depart_date', $depart_date)
+                           ->where('return_date', $return_date)
+                           ->get();
+
+        return view('search.show')->with('results', $results);
+      }
 
     }
 
